@@ -3,7 +3,7 @@
     <v-app-bar-title>T'choupi</v-app-bar-title>
   </v-app-bar>
   <VSheet>
-    <v-btn v-for="x in list" :key="x">{{x}}</v-btn>
+    <v-btn v-for="x in urlList" :key="x" @click="openUrl(x.url)">{{x.label}}</v-btn>
   </VSheet>
 </template>
 
@@ -11,11 +11,18 @@
 export default {
   name: "MainPanel",
   created() {},
-  data() {
-    return {list: [{label:"오디오북", url:"http://naver.com"}]};
+  data() {},
+  props: {
+    urlList: {
+      type: Array,
+      default: null,
+    }
   },
-  props: {},
-  methods: {},
+  methods: {
+    openUrl(url) {
+      window.open(url, '_self'); // '_blank'로 새 창에서 URL을 엽니다.
+    }
+  },
 };
 </script>
 
