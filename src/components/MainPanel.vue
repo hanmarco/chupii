@@ -3,7 +3,7 @@
     <v-app-bar-title @click="openUrl('/')">T'choupi</v-app-bar-title>
   </v-app-bar>
   <VSheet class="ma-2">
-    <v-btn v-for="x in urlList" :key="x" @click="openUrl(x.url)" block class="mt-2" variant="tonal" color="red" size="x-large">{{x.label}}</v-btn>
+    <v-btn v-for="(x, numberofbook) in urlList" :key="x" @click="openUrl(x.url)" block class="mt-2" variant="tonal" color="red" size="x-large">{{numberofbook}}. {{x.label}}</v-btn>
   </VSheet>
 </template>
 
