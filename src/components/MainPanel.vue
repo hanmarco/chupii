@@ -1,5 +1,7 @@
 <template>
-  <div>Chupi</div>
+  <v-app-bar :elevation="4" color="red">
+    <v-app-bar-title>T'choupi</v-app-bar-title>
+  </v-app-bar>
 </template>
 
 <script>
