@@ -14,7 +14,7 @@
     ></v-text-field>
   </v-app-bar>
   <VSheet class="ma-2">
-    <v-btn v-for="(x, numberofbook) in urlList" :key="x" @click="openUrl(x.url)" block class="mt-2" variant="tonal" color="red" size="x-large">{{displayIndex(numberofbook)}}. {{x.label}}</v-btn>
+    <v-btn v-for="(x, numberofbook) in filteredUrlList" :key="x" @click="openUrl(x.url)" block class="mt-2" variant="tonal" color="red" size="x-large">{{displayIndex(numberofbook)}}. {{x.label}}</v-btn>
   </VSheet>
 </template>
 
@@ -31,6 +31,17 @@ export default {
       type: Array,
       default: null,
     }
+  },
+  computed: {
+    filteredUrlList() {
+      if (!this.search) {
+        return this.urlList;
+      }
+      const searchLower = this.search.toLowerCase();
+      return this.urlList.filter(x => 
+        x.label.toLowerCase().includes(searchLower)
+      );
+    },
   },
   methods: {
     openUrl(url) {
