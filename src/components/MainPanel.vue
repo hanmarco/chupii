@@ -3,7 +3,7 @@
     <v-app-bar-title>T'choupi</v-app-bar-title>
   </v-app-bar>
   <VSheet class="ma-2">
-    <v-btn v-for="(x, numberofbook) in urlList" :key="x" @click="openUrl(x.url)" block class="mt-2" variant="tonal" color="red" size="x-large">{{numberofbook+1}}. {{x.label}}</v-btn>
+    <v-btn v-for="(x, numberofbook) in urlList" :key="x" @click="openUrl(x.url)" block class="mt-2" variant="tonal" color="red" size="x-large">{{displayIndex(numberofbook)}}. {{x.label}}</v-btn>
   </VSheet>
 </template>
 
@@ -11,7 +11,9 @@
 export default {
   name: "MainPanel",
   created() {},
-  data() {},
+  data: () => ({
+    limit: 71
+  }),
   props: {
     urlList: {
       type: Array,
@@ -21,7 +23,14 @@ export default {
   methods: {
     openUrl(url) {
       window.open(url, '_self'); // '_blank'로 새 창에서 URL을 엽니다.
-    }
+    },
+    displayIndex(index) {
+      // 72번째부터 다시 번호를 1번부터 시작하도록 설정
+      if (index >= this.limit) {
+        return index - this.limit + 1;
+      }
+      return index + 1;
+    },
   },
 };
 </script>
