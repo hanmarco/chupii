@@ -26,7 +26,7 @@
           block
           class="mt-2"
           variant="tonal"
-          color="red"
+          :color="x.originalIndex+1 == displayOriginalIndex(x.originalIndex)? 'red': 'blue'"
           size="x-large"
           :ripple="false"
         >
