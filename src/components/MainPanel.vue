@@ -30,7 +30,10 @@
           size="x-large"
           :ripple="false"
         >
-          {{ displayOriginalIndex(x.originalIndex) }}. {{ x.label }}
+          <template v-slot:prepend>
+            <span class="prepend-number" style="margin-right: 8px;">{{ displayOriginalIndex(x.originalIndex) }}.</span>
+          </template>
+          {{ x.label }}
         </v-btn>
       </v-col>
     </v-row>
