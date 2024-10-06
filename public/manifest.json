@@ -5,7 +5,7 @@
     "background_color": "#FFFFFF",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/chupi",
+    "start_url": "/chupi/",
     "icons": [
       {
         "src": "img/icons/android-chrome-192x192.png",
