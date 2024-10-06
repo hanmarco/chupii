@@ -6,7 +6,8 @@
     
   <v-footer>
     <div class="mb-2 text-center w-100">
-      {{ new Date().getFullYear() }} — Made by <strong>Da-young</strong> & <strong>Do-young</strong>
+      <div>{{ new Date().getFullYear() }} — Created by <strong>Marco</strong></div>
+      <div class="small-gray-text">Made for <strong>Da-young</strong> & <strong>Do-young</strong></div>
     </div>
   </v-footer>
   </v-app>
@@ -29,3 +30,9 @@ export default {
   }),
 }
 </script>
+<style>
+  .small-gray-text {
+    font-size: 0.85rem;  /* 텍스트 크기를 작게 설정 */
+    color: gray;         /* 글씨 색상을 회색으로 설정 */
+  }
+</style>
