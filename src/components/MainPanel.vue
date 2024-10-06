@@ -35,6 +35,10 @@
       </v-col>
     </v-row>
   </VSheet>
+  <VSheet>
+    <v-list :items="filteredUrlList">
+    </V-list>
+  </VSheet>
 </template>
 
 <script>
