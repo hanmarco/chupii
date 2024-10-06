@@ -49,4 +49,11 @@ export default {
     color: gray;
     /* 글씨 색상을 회색으로 설정 */
 }
+
+html, body {
+    overflow-x: hidden;  /* 수평 스크롤 제거 */
+    height: 100%;        /* 수직 스크롤을 위한 높이 설정 */
+    margin: 0;
+    padding: 0;
+}
 </style>

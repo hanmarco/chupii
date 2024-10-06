@@ -38,11 +38,11 @@
           class="mt-2"
           variant="tonal"
           :color="x.originalIndex+1 == displayOriginalIndex(x.originalIndex)? 'red': 'blue'"
-          size="x-large"
+          size="large"
           :ripple="false"
         >
           <template v-slot:prepend>
-            <span class="prepend-number" style="margin-right: 8px;">{{ displayOriginalIndex(x.originalIndex) }}.</span>
+            <span class="prepend-number" style="margin-right: 0px;">{{ displayOriginalIndex(x.originalIndex) }}.</span>
           </template>
           {{ x.label }}
         </v-btn>
