@@ -50,12 +50,14 @@
 </template>
 
 <script>
+import configuration from '../configuration.json'
+
 export default {
   name: "MainPanel",
   data: () => ({
     search: "",
     limit: 71,
-    chupiTube: 'https://www.youtube.com/watch?v=tiLEdxPU2mE&list=PLN7gmmzwthNYU0_kLHRzqGHC3udLddNB-'
+    chupiTube: configuration.chupiTube
   }),
   props: {
     urlList: {
