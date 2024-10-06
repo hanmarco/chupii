@@ -14,23 +14,41 @@
     ></v-text-field>
   </v-app-bar>
   <VSheet class="ma-2">
-    <v-btn v-for="x in filteredUrlList" :key="x" @click="openUrl(x.url)" block class="mt-2" variant="tonal" color="red" size="x-large">{{displayOriginalIndex(x.originalIndex)}}. {{x.label}}</v-btn>
+    <v-row dense>
+      <v-col
+        v-for="x in filteredUrlList"
+        :key="x.originalIndex"
+        cols="12"
+        md="6"
+      >
+        <v-btn
+          @click="openUrl(x.url)"
+          block
+          class="mt-2"
+          variant="tonal"
+          color="red"
+          size="x-large"
+          :ripple="false"
+        >
+          {{ displayOriginalIndex(x.originalIndex) }}. {{ x.label }}
+        </v-btn>
+      </v-col>
+    </v-row>
   </VSheet>
 </template>
 
 <script>
 export default {
   name: "MainPanel",
-  created() {},
   data: () => ({
-    search:"",
-    limit: 71
+    search: "",
+    limit: 71,
   }),
   props: {
     urlList: {
       type: Array,
       default: null,
-    }
+    },
   },
   computed: {
     filteredUrlList() {
@@ -40,15 +58,14 @@ export default {
       const searchLower = this.search.toLowerCase();
       return this.urlList
         .map((item, index) => ({ ...item, originalIndex: index })) // 원본 인덱스를 포함
-        .filter(x => x.label.toLowerCase().includes(searchLower));
+        .filter((x) => x.label.toLowerCase().includes(searchLower));
     },
   },
   methods: {
     openUrl(url) {
-      window.open(url, '_self'); // '_blank'로 새 창에서 URL을 엽니다.
+      window.open(url, "_self");
     },
     displayOriginalIndex(index) {
-      // 72번째부터 다시 번호를 1번부터 시작하도록 설정
       if (index >= this.limit) {
         return index - this.limit + 1;
       }
@@ -57,5 +74,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped></style>
