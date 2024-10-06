@@ -1,5 +1,7 @@
 <template>
-  <v-app-bar :elevation="4" color="red">
+  <v-app-bar :elevation="4" 
+   :image="imageSrc"
+  >
     <v-app-bar-title>T'choupi</v-app-bar-title>
 
     <template v-slot:prepend>
@@ -51,13 +53,15 @@
 
 <script>
 import configuration from '../configuration.json'
+import imageSrc from '@/assets/appbar.png';
 
 export default {
   name: "MainPanel",
   data: () => ({
     search: "",
     limit: 71,
-    chupiTube: configuration.chupiTube
+    chupiTube: configuration.chupiTube,
+    imageSrc
   }),
   props: {
     urlList: {
