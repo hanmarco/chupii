@@ -14,7 +14,7 @@
     ></v-text-field>
   </v-app-bar>
   <VSheet class="ma-2">
-    <v-btn v-for="(x, numberofbook) in filteredUrlList" :key="x" @click="openUrl(x.url)" block class="mt-2" variant="tonal" color="red" size="x-large">{{displayIndex(numberofbook)}}. {{x.label}}</v-btn>
+    <v-btn v-for="x in filteredUrlList" :key="x" @click="openUrl(x.url)" block class="mt-2" variant="tonal" color="red" size="x-large">{{displayOriginalIndex(x.originalIndex)}}. {{x.label}}</v-btn>
   </VSheet>
 </template>
 
@@ -35,19 +35,19 @@ export default {
   computed: {
     filteredUrlList() {
       if (!this.search) {
-        return this.urlList;
+        return this.urlList.map((item, index) => ({ ...item, originalIndex: index })); // 원본 인덱스를 포함
       }
       const searchLower = this.search.toLowerCase();
-      return this.urlList.filter(x => 
-        x.label.toLowerCase().includes(searchLower)
-      );
+      return this.urlList
+        .map((item, index) => ({ ...item, originalIndex: index })) // 원본 인덱스를 포함
+        .filter(x => x.label.toLowerCase().includes(searchLower));
     },
   },
   methods: {
     openUrl(url) {
       window.open(url, '_self'); // '_blank'로 새 창에서 URL을 엽니다.
     },
-    displayIndex(index) {
+    displayOriginalIndex(index) {
       // 72번째부터 다시 번호를 1번부터 시작하도록 설정
       if (index >= this.limit) {
         return index - this.limit + 1;
