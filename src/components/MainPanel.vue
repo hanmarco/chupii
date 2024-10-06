@@ -1,6 +1,15 @@
 <template>
   <v-app-bar :elevation="4" color="red">
     <v-app-bar-title>T'choupi</v-app-bar-title>
+
+    <template v-slot:prepend>
+      <v-btn icon>
+        <v-icon @click="openUrl(chupiTube)">mdi-youtube</v-icon>
+      </v-btn>
+    </template>
+
+    <v-spacer></v-spacer>
+    
     <v-text-field
       v-model="search"
       density="compact"
@@ -46,6 +55,7 @@ export default {
   data: () => ({
     search: "",
     limit: 71,
+    chupiTube: 'https://www.youtube.com/watch?v=tiLEdxPU2mE&list=PLN7gmmzwthNYU0_kLHRzqGHC3udLddNB-'
   }),
   props: {
     urlList: {
