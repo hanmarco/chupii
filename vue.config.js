@@ -4,7 +4,7 @@ module.exports = defineConfig({
   pwa: {
     name: 'Chupi',
     workboxOptions: {
-      navigateFallback: '/chupi/index.html',
+      navigateFallback: '/chupii/index.html',
     }
   },
   transpileDependencies: true,
