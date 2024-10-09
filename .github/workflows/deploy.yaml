@@ -23,7 +23,7 @@ jobs:
       # 3. 의존성을 설치하고 Vue 프로젝트를 빌드합니다.
       - name: Install dependencies and build
         run: |
-          npm ci
+          npm install
           npm run build
 
       # 4. 빌드된 파일을 GitHub Pages로 배포합니다.
