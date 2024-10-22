@@ -1,4 +1,5 @@
 <template>
+  <p>MainPanel2</p>
   <v-app-bar :elevation="4" 
    :image="imageSrc"
   >
