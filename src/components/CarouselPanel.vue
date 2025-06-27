@@ -1,13 +1,14 @@
 <template>
-  <v-container fluid class="carousel-container">
-    <v-row>
-      <v-col cols="12">
-        <div class="d-flex align-center justify-space-between mb-4">
+  <v-container fluid class="carousel-container pa-0">
+    <!-- <v-row class="ma-0">
+      <v-col cols="12" class="pa-2">
+        <div class="d-flex align-center justify-space-between mb-2">
           <v-btn 
             icon="mdi-arrow-left" 
             variant="text" 
             @click="goBack"
             size="large"
+            color="white"
           ></v-btn>
           
           <h1 class="text-center">{{ currentBookTitle }}</h1>
@@ -17,13 +18,14 @@
             variant="text" 
             @click="goHome"
             size="large"
+            color="white"
           ></v-btn>
         </div>
       </v-col>
-    </v-row>
+    </v-row> -->
 
-    <v-row justify="center">
-      <v-col cols="12" md="10" lg="8">
+    <v-row justify="center" class="ma-0">
+      <v-col cols="12" class="pa-1">
         <v-card class="carousel-card" elevation="8">
           <v-window v-model="currentPage" class="carousel-window">
             <v-window-item
@@ -31,16 +33,16 @@
               :key="index"
               :value="index"
             >
-              <div class="d-flex justify-center align-center pa-4">
+              <div class="d-flex justify-center align-center pa-2">
                 <!-- 왼쪽 페이지 -->
-                <div class="page-container mr-2">
+                <div class="page-container mr-1">
                   <v-img
                     :src="pagePair.left"
                     :alt="`Page ${pagePair.leftPageNumber}`"
                     class="book-page"
                     cover
-                    width="400"
-                    height="600"
+                    width="500"
+                    height="700"
                   >
                     <template v-slot:placeholder>
                       <v-row class="fill-height ma-0" align="center" justify="center">
@@ -48,7 +50,7 @@
                       </v-row>
                     </template>
                   </v-img>
-                  <div class="text-center mt-2">
+                  <div class="text-center mt-1">
                     <v-chip size="small" color="primary" variant="outlined">
                       {{ pagePair.leftPageNumber }}
                     </v-chip>
@@ -56,14 +58,14 @@
                 </div>
 
                 <!-- 오른쪽 페이지 (마지막 페이지가 홀수인 경우 빈 페이지) -->
-                <div class="page-container ml-2" v-if="pagePair.right">
+                <div class="page-container ml-1" v-if="pagePair.right">
                   <v-img
                     :src="pagePair.right"
                     :alt="`Page ${pagePair.rightPageNumber}`"
                     class="book-page"
                     cover
-                    width="400"
-                    height="600"
+                    width="500"
+                    height="700"
                   >
                     <template v-slot:placeholder>
                       <v-row class="fill-height ma-0" align="center" justify="center">
@@ -71,7 +73,7 @@
                       </v-row>
                     </template>
                   </v-img>
-                  <div class="text-center mt-2">
+                  <div class="text-center mt-1">
                     <v-chip size="small" color="primary" variant="outlined">
                       {{ pagePair.rightPageNumber }}
                     </v-chip>
@@ -79,7 +81,7 @@
                 </div>
                 
                 <!-- 빈 페이지 (마지막 페이지가 홀수인 경우) -->
-                <div class="page-container ml-2 empty-page" v-else>
+                <div class="page-container ml-1 empty-page" v-else>
                   <div class="empty-page-content">
                     <v-icon size="48" color="grey-lighten-1">mdi-book-open-variant</v-icon>
                     <p class="text-grey-lighten-1 mt-2">끝</p>
@@ -90,7 +92,7 @@
           </v-window>
 
           <!-- 페이지 인디케이터 -->
-          <v-card-actions class="justify-center pa-4">
+          <!-- <v-card-actions class="justify-center pa-2">
             <v-chip-group>
               <v-chip
                 v-for="(pagePair, index) in pagePairs"
@@ -103,10 +105,10 @@
                 {{ pagePair.leftPageNumber }}-{{ pagePair.rightPageNumber || pagePair.leftPageNumber }}
               </v-chip>
             </v-chip-group>
-          </v-card-actions>
+          </v-card-actions> -->
 
           <!-- 네비게이션 버튼 -->
-          <v-card-actions class="justify-space-between pa-4">
+          <!-- <v-card-actions class="justify-space-between pa-2">
             <v-btn
               :disabled="currentPage === 0"
               @click="previousPage"
@@ -128,7 +130,7 @@
             >
               다음
             </v-btn>
-          </v-card-actions>
+          </v-card-actions> -->
         </v-card>
       </v-col>
     </v-row>
@@ -231,11 +233,13 @@ export default {
 .carousel-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0 !important;
 }
 
 .carousel-card {
-  border-radius: 16px;
+  border-radius: 8px;
   overflow: hidden;
+  margin: 0;
 }
 
 .carousel-window {
@@ -246,24 +250,24 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 400px;
+  min-width: 500px;
 }
 
 .book-page {
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   object-fit: cover;
-  width: 400px !important;
-  height: 600px !important;
+  width: 500px !important;
+  height: 700px !important;
 }
 
 .empty-page {
-  width: 400px;
-  height: 600px;
+  width: 500px;
+  height: 700px;
   background-color: #f8f9fa;
   border: 2px dashed #dee2e6;
-  border-radius: 8px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -277,5 +281,6 @@ h1 {
   color: white;
   font-weight: 600;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0;
 }
 </style>
