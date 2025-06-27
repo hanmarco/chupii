@@ -56,6 +56,8 @@
 </template>
 
 <script>
+import bookList from '@/list.json'
+
 export default {
   name: "RouteMainPanel",
   data() {
@@ -68,13 +70,16 @@ export default {
   },
   methods: {
     generateBookList() {
-      // bok_001부터 bok_071까지의 책 목록 생성
+      // list.json의 데이터를 사용하여 책 목록 생성
       this.books = [];
       for (let i = 1; i <= 71; i++) {
         const bookId = `bok_${String(i).padStart(3, '0')}`;
+        const bookData = bookList[i - 1]; // list.json은 0부터 시작하므로 i-1
+        
         this.books.push({
           id: bookId,
-          title: `추피 동화 ${i}`
+          title: bookData.label,
+          url: bookData ? bookData.url : ''
         });
       }
     },

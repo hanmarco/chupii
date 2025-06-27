@@ -136,6 +136,8 @@
 </template>
 
 <script>
+import bookList from '@/list.json'
+
 export default {
   name: 'CarouselPanel',
   data() {
@@ -148,8 +150,9 @@ export default {
   },
   computed: {
     currentBookTitle() {
-      const bookNumber = this.bookId.replace('bok_', '');
-      return `추피 동화 ${bookNumber}`;
+      const bookNumber = parseInt(this.bookId.replace('bok_', ''));
+      const bookData = bookList[bookNumber - 1]; // list.json은 0부터 시작하므로 bookNumber-1
+      return bookData ? bookData.label : `추피 동화 ${bookNumber}`;
     },
     pagePairs() {
       const pairs = [];
