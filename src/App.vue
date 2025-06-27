@@ -1,8 +1,7 @@
 <template>
     <v-app>
       <nav>
-        <RouterLink to="/">Go to Home</RouterLink>
-        <RouterLink to="/carousel">Go to About</RouterLink>
+        <RouterLink to="/">홈으로 돌아가기</RouterLink>
       </nav>
       <RouterView  />
       </v-app>

@@ -8,8 +8,9 @@ const routes = [
     component: RouteMainPanel,
   },
   {
-    path: '/carousel',
+    path: '/carousel/:bookId?',
     component: CarouselPanel,
+    props: true,
   },
 ];
 
