@@ -5,51 +5,53 @@
         <h1 class="text-center mb-6">추피 동화책 📚</h1>
       </v-col>
     </v-row>
-    
-    <v-row>
-      <v-col 
-        v-for="book in books" 
-        :key="book.id"
-        cols="12" 
-        sm="6" 
-        md="4" 
-        lg="3" 
-        xl="2"
-      >
-        <v-card 
-          class="book-card mx-auto" 
-          max-width="200"
-          @click="goToCarousel(book.id)"
-          hover
-          elevation="3"
-        >
-          <v-img
-            :src="getBookCover(book.id)"
-            height="200"
-            cover
-            class="book-cover"
+    <v-row justify="center">
+      <v-col cols="12" md="10" lg="8">
+        <v-list class="book-list">
+          <v-list-item
+            v-for="book in books"
+            :key="book.id"
+            @click="goToCarousel(book.id)"
+            class="book-list-item mb-2"
+            hover
           >
-            <template v-slot:placeholder>
-              <v-row class="fill-height ma-0" align="center" justify="center">
-                <v-progress-circular indeterminate color="primary"></v-progress-circular>
-              </v-row>
+            <template v-slot:prepend>
+              <v-avatar size="80" class="book-avatar">
+                <v-img
+                  :src="getBookCover(book.id)"
+                  cover
+                  class="book-cover"
+                >
+                  <template v-slot:placeholder>
+                    <v-row class="fill-height ma-0" align="center" justify="center">
+                      <v-progress-circular indeterminate color="primary"></v-progress-circular>
+                    </v-row>
+                  </template>
+                </v-img>
+              </v-avatar>
             </template>
-          </v-img>
-          
-          <v-card-title class="text-center pa-3">
-            <span class="text-body-2">{{ book.title }}</span>
-          </v-card-title>
-          
-          <v-card-text class="text-center pa-2">
-            <v-chip 
-              color="primary" 
-              size="small"
-              variant="outlined"
-            >
+
+            <v-list-item-title class="book-title">
+              {{ book.title }}
+            </v-list-item-title>
+            
+            <v-list-item-subtitle class="book-subtitle">
               {{ book.id }}
-            </v-chip>
-          </v-card-text>
-        </v-card>
+            </v-list-item-subtitle>
+
+            <template v-slot:append>
+              <v-chip 
+                color="primary" 
+                size="small"
+                variant="outlined"
+                class="book-number"
+              >
+                {{ book.id.replace('bok_', '') }}
+              </v-chip>
+              <v-icon icon="mdi-chevron-right" class="ml-2"></v-icon>
+            </template>
+          </v-list-item>
+        </v-list>
       </v-col>
     </v-row>
   </v-container>
@@ -95,17 +97,48 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.book-card {
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+.book-list {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+.book-list-item {
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease-in-out;
   
   &:hover {
-    transform: translateY(-5px);
+    background-color: #f5f5f5;
+    transform: translateX(4px);
   }
 }
 
+.book-avatar {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 .book-cover {
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px;
+}
+
+.book-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1976d2;
+  margin-bottom: 4px;
+}
+
+.book-subtitle {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.book-number {
+  font-weight: 600;
 }
 
 h1 {
