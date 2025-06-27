@@ -1,8 +1,8 @@
 <template>
   <v-container fluid class="carousel-container pa-0">
-    <!-- <v-row class="ma-0">
-      <v-col cols="12" class="pa-2">
-        <div class="d-flex align-center justify-space-between mb-2">
+    <v-row class="ma-0">
+      <v-col cols="12" class="pa-0">
+        <div class="d-flex align-center justify-space-between">
           <v-btn 
             icon="mdi-arrow-left" 
             variant="text" 
@@ -11,7 +11,7 @@
             color="white"
           ></v-btn>
           
-          <h1 class="text-center">{{ currentBookTitle }}</h1>
+          <h2 class="text-center">{{ currentBookTitle }}</h2>
           
           <v-btn 
             icon="mdi-home" 
@@ -22,10 +22,10 @@
           ></v-btn>
         </div>
       </v-col>
-    </v-row> -->
+    </v-row>
 
     <v-row justify="center" class="ma-0">
-      <v-col cols="12" class="pa-1">
+      <v-col cols="12" class="pa-0">
         <v-card class="carousel-card" elevation="8">
           <v-window v-model="currentPage" class="carousel-window">
             <v-window-item
@@ -41,7 +41,7 @@
                     :alt="`Page ${pagePair.leftPageNumber}`"
                     class="book-page"
                     cover
-                    width="500"
+                    width="700"
                     height="700"
                   >
                     <template v-slot:placeholder>
@@ -64,7 +64,7 @@
                     :alt="`Page ${pagePair.rightPageNumber}`"
                     class="book-page"
                     cover
-                    width="500"
+                    width="700"
                     height="700"
                   >
                     <template v-slot:placeholder>
@@ -250,7 +250,27 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 500px;
+  min-width: 700px;
+  
+  @media (max-width: 1400px) {
+    min-width: 600px;
+  }
+  
+  @media (max-width: 1200px) {
+    min-width: 500px;
+  }
+  
+  @media (max-width: 1000px) {
+    min-width: 400px;
+  }
+  
+  @media (max-width: 800px) {
+    min-width: 300px;
+  }
+  
+  @media (max-width: 600px) {
+    min-width: 250px;
+  }
 }
 
 .book-page {
@@ -258,12 +278,37 @@ export default {
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   object-fit: cover;
-  width: 500px !important;
+  width: 700px !important;
   height: 700px !important;
+  
+  @media (max-width: 1400px) {
+    width: 600px !important;
+    height: 600px !important;
+  }
+  
+  @media (max-width: 1200px) {
+    width: 500px !important;
+    height: 500px !important;
+  }
+  
+  @media (max-width: 1000px) {
+    width: 400px !important;
+    height: 400px !important;
+  }
+  
+  @media (max-width: 800px) {
+    width: 300px !important;
+    height: 300px !important;
+  }
+  
+  @media (max-width: 600px) {
+    width: 250px !important;
+    height: 250px !important;
+  }
 }
 
 .empty-page {
-  width: 500px;
+  width: 700px;
   height: 700px;
   background-color: #f8f9fa;
   border: 2px dashed #dee2e6;
@@ -271,6 +316,31 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  @media (max-width: 1400px) {
+    width: 600px;
+    height: 600px;
+  }
+  
+  @media (max-width: 1200px) {
+    width: 500px;
+    height: 500px;
+  }
+  
+  @media (max-width: 1000px) {
+    width: 400px;
+    height: 400px;
+  }
+  
+  @media (max-width: 800px) {
+    width: 300px;
+    height: 300px;
+  }
+  
+  @media (max-width: 600px) {
+    width: 250px;
+    height: 250px;
+  }
 }
 
 .empty-page-content {
